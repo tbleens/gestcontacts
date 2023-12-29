@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Création d'un contact
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-6">
+		<h1 class="mt-4">Création d'un contact</h1>
+		{# {{ form(form) }} #}
+		{% if errors is defined %}
+			<div class="alert alert-danger">
+				{% for error in errors %}
+					<div>{{ error.message }}</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+		<form action="{{ path('contacts.new') }}" method="POST">
+			{{ form_widget(form._token) }}
+			<div class="form-group">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name) }}
+				{% if form_errors(form.name) %}
+					<div class="error-message">
+						{{ form_errors(form.name) }}
+					</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.address) }}
+				{{ form_widget(form.address) }}
+				{% if form_errors(form.address) %}
+					<div class="error-message">
+						{{ form_errors(form.address) }}
+					</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.telephone) }}
+				{{ form_widget(form.telephone) }}
+				{% if form_errors(form.telephone) %}
+					<div class="error-message">
+						{{ form_errors(form.telephone) }}
+					</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.email) }}
+				{{ form_widget(form.email) }}
+				{% if form_errors(form.email) %}
+					<div class="error-message">
+						{{ form_errors(form.email) }}
+					</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.name_entreprise) }}
+				{{ form_widget(form.name_entreprise) }}
+				{% if form_errors(form.name_entreprise) %}
+					<div class="error-message">
+						{{ form_errors(form.name_entreprise) }}
+					</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.poste) }}
+				{{ form_widget(form.poste) }}
+				{% if form_errors(form.poste) %}
+					<div class="error-message">
+						{{ form_errors(form.poste) }}
+					</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.birthdate) }}
+				{{ form_widget(form.birthdate) }}
+				{% if form_errors(form.birthdate) %}
+					<div class="error-message">
+						{{ form_errors(form.birthdate) }}
+					</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.notes) }}
+				{{ form_widget(form.notes) }}
+				{% if form_errors(form.notes) %}
+					<div class="error-message">
+						{{ form_errors(form.notes) }}
+					</div>
+				{% endif %}
+			</div>
+			<button type="submit" class="btn btn-primary mt-4 mb-2">Enregistrer le contact</button>
+		</form>
+	</div>
+{% endblock %}

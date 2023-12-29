@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+GestContact - Gestion des contacts
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1>Mes Contacts</h1>
+		<a href="{{ path('contacts.new')}}" class='btn btn-primary float-end'>Créer un nouveau contact</a>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+		<div class="count mt-4">
+			Il y'a
+			{{ contacts.getTotalItemCount }}
+			contact
+		</div>
+		<table class="table table-hover mt-4">
+			<thead>
+				<tr>
+					<th scope="col">Nom</th>
+					<th scope="col">Adresse</th>
+					<th scope="col">Numero de telephone</th>
+					<th scope="col">Adresse email</th>
+					<th scope="col">Edition</th>
+					<th scope="col">Suppression</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for contact in contacts %}
+					<tr class="table-secondary">
+						<th scope="row">{{ contact.id }}</th>
+						<td>{{ contact.name }}</td>
+						<td>{{ contact.address }}</td>
+						<td>{{ contact.telephone }}</td>
+						<td>{{ contact.email }}</td>
+						<td>
+							<a href="{{ path('contacts.edit', {id: contact.id}) }}" class="btn btn-info">Edition</button>
+						</td>
+						<td>
+							<a href="{{ path('contacts.delete', {id: contact.id}) }}" class="btn btn-warning">Suppression</button>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="navigation d-flex justify-content-center">
+			{{ knp_pagination_render(contacts) }}
+		</div>
+	</div>
+{% endblock %}

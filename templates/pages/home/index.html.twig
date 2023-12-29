@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Simrecipe!
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mt-4">
+		<div class="jumbotron">
+			<h1 class="display-4">Gestion de contact</h1>
+			<p class="lead">Bienvenu sur notre application de contact.</p>
+			<hr class="my-4">
+			{# <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> #}
+			<p class="lead">
+				<a class="btn btn-primary btn-lg" href="{{ path('contact.index') }}" role="button">Voir mes contacts</a>
+			</p>
+		</div>
+	</div>
+{% endblock %}
